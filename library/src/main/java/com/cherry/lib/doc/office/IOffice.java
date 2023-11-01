@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Environment;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -45,7 +46,6 @@ public abstract class IOffice implements IMainFrame {
                 if (bitmap == null
                         || bitmap.getWidth() != componentWidth
                         || bitmap.getHeight() != componentHeight) {
-                    // custom picture size
                     if (bitmap != null) {
                         bitmap.recycle();
                     }
@@ -87,11 +87,8 @@ public abstract class IOffice implements IMainFrame {
             return;
         }
         if (tempFilePath == null) {
-            String state = Environment.getExternalStorageState();
-            if (Environment.MEDIA_MOUNTED.equals(state)) {
-                tempFilePath = Environment.getExternalStorageDirectory().getAbsolutePath();
-            }
-            File file = new File(tempFilePath + File.separatorChar + "tempPic");
+            tempFilePath = "/data/data/com.cherry.doc/cache";
+            File file = new File("/data/data/com.cherry.doc/cache/tempPic");
             if (!file.exists()) {
                 file.mkdir();
             }
@@ -117,8 +114,8 @@ public abstract class IOffice implements IMainFrame {
         return control.getView();
     }
 
-    public void openFile(String filepath,int docSourceType,String fileType) {
-        getControl().openFile(filepath,docSourceType,fileType);
+    public void openFile(String filepath, int docSourceType, String fileType) {
+        control.openFile(filepath, docSourceType, fileType);
     }
 
     /**
@@ -205,10 +202,6 @@ public abstract class IOffice implements IMainFrame {
 
 
     public void changePage() {
-    }
-
-    public MainControl getControl() {
-        return this.control;
     }
 
     /**
@@ -308,6 +301,7 @@ public abstract class IOffice implements IMainFrame {
     }
 
     /**
+     *
      */
     public String getTXTDefaultEncode() {
         return "GBK";

@@ -192,7 +192,7 @@ public class PictureKit
            left = left >= 0 ? left : 0;
            top = top >= 0 ? top : 0;
            right = right >= srcWidth ? srcWidth : right;
-           bottom = bottom >= srcHeight ? srcHeight : bottom;
+           bottom = Math.min(bottom, srcHeight);
            srcCrop = new Rect(left, top, right, bottom);
            
            canvas.save();

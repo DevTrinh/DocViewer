@@ -26,7 +26,7 @@ import kotlinx.android.synthetic.main.pdf_view_page_loading_layout.view.*
  * -----------------------------------------------------------------
  */
 
-internal class PdfViewAdapter(
+internal class  PdfViewAdapter(
     private val renderer: PdfRendererCore?,
     private val pageSpacing: Rect,
     private val enableLoadingForPages: Boolean

@@ -41,14 +41,13 @@ import com.cherry.lib.doc.office.wp.control.Word;
 public class LayoutKit
 {
     //
-    private static LayoutKit kit = new LayoutKit();
+    private static final LayoutKit kit = new LayoutKit();
 
     private LayoutKit()
     {   
     }
     /**
-     * 
-     * @return
+     *
      */
     public static LayoutKit instance()
     {
@@ -56,7 +55,7 @@ public class LayoutKit
     }
     
     /**
-     * 布局页面坐标
+     * Tọa độ trang bố cục
      * @param root
      * @param zoom
      */
@@ -119,9 +118,9 @@ public class LayoutKit
         IElement elem = para.getElement();
         long lineStart = startOffset;
         long elemEnd = elem.getEndOffset();
-        // 处理段前段后间距
+        // Khoảng cách trước và sau phần xử lý
         IView prePara = para.getPreView();
-        if (prePara == null) // 页面第一个段落
+        if (prePara == null) // Đoạn đầu tiên của trang
         {
             spanH -= paraAttr.beforeSpace;
             para.setTopIndent(paraAttr.beforeSpace);

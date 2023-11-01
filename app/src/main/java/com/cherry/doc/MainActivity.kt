@@ -19,6 +19,7 @@ import com.cherry.doc.util.DocUtil
 import com.cherry.lib.doc.DocViewerActivity
 import com.cherry.lib.doc.bean.DocSourceType
 import com.cherry.lib.doc.bean.FileType
+import com.cherry.lib.doc.office.fc.pdf.PDFLib
 import com.cherry.lib.doc.util.FileUtils
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -147,6 +148,7 @@ class MainActivity : AppCompatActivity(),OnClickListener,OnItemClickListener {
 
     fun openDoc(path: String,docSourceType: Int,type: Int? = null) {
         DocViewerActivity.launchDocViewer(this,docSourceType,path,type)
+        
     }
 
     override fun onItemClick(p0: AdapterView<*>?, v: View?, position: Int, id: Long) {
